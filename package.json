@@ -1,0 +1,22 @@
+{
+  "name": "access-controll",
+  "version": "1.0.0",
+  "description": "An user access control to a admin panel",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --detectOpenHandles",
+    "start": "nodemon src/server.js --ignore test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "nodemon": "^1.19.1"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
