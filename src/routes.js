@@ -1,9 +1,7 @@
-const express = require('express');
-const jwt = require('jsonwebtoken');
-const { execQuery } = require('./database-connect');
-
+const express = require("express");
 const routes = express.Router();
+const UserController = require("./controllers/UserController");
 
-routes.get('/login',(req,res) => {
-    execQuery('SELECT *FROM users', res);
-});
+routes.post("/login", UserController.login);
+
+module.exports = routes;

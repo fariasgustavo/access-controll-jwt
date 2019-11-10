@@ -1,7 +1,12 @@
-const database = require('../database-connect');
+const knex = require("../database");
 
-export class UserModel{
-    async getOne(email, password){
-        
-    }
-}
+module.exports = {
+  async findOne(email, password) {
+    const user = await knex("users").where({
+      email: email,
+      password: password
+    });
+
+    return user;
+  }
+};
