@@ -7,6 +7,12 @@ module.exports = {
       password: password
     });
 
-    return user;
+    return user[0];
+  },
+
+  async all(){
+    const users = await knex("users");
+
+    return users;
   }
 };

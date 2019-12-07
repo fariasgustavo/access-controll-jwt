@@ -1,5 +1,5 @@
 const UsersModel = require("../models/UsersModel");
-const jwt = require("jsonwebtoken");
+const { createToken } = require("../utils/token");
 
 module.exports = {
   async login(req, res) {
@@ -12,21 +12,21 @@ module.exports = {
 
     const user = await UsersModel.findOne(email, password);
 
-    if (!user.length) {
-      res.status(401).send("Unauthorized: user not found");
+    if (!user) {
+      res.status(401).send("User not found");
       return;
     }
 
-    const token = jwt.sign(
-      {
-        sub: user.id,
-        email: user.email
-      },
-      "accessToken",
-      { expiresIn: "3 hours" }
-    );
+    const token = createToken(user);
 
     res.status(200).send({ token });
+
+    return;
+  },
+
+  async getAll(req, res){
+    const users = await UsersModel.all();
+    res.status(200).send(users);
 
     return;
   }
