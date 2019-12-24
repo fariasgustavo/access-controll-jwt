@@ -1,4 +1,8 @@
+require("dotenv").config({
+  path: "./.env"
+});
 const UsersModel = require("../models/UsersModel");
+const RefreshTokenModel = require("../models/RefreshTokenModel");
 const { createToken } = require("../utils/token");
 
 module.exports = {
@@ -17,9 +21,12 @@ module.exports = {
       return;
     }
 
-    const token = createToken(user);
+    const token = createToken(user,process.env.TOKEN_EXPIRES);
+    const refreshToken = createToken(user,process.env.REFRESH_TOKEN_EXPIRES);
 
-    res.status(200).send({ token });
+    RefreshTokenModel.create(token);
+
+    res.status(200).send({ token, refreshToken });
 
     return;
   },

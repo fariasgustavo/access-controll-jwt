@@ -1,9 +1,10 @@
 const express = require("express");
 const routes = express.Router();
-const { authorize } = require("./utils/token");
+const Auth = require("./middlewares/Auth");
 const UserController = require("./controllers/UserController");
 
 routes.get("/login", UserController.login);
-routes.get("/users", authorize, UserController.getAll);
+routes.get("/refresh-token",Auth.refresToken)
+routes.get("/users", Auth.authorize, UserController.getAll);
 
 module.exports = routes;

@@ -10,6 +10,12 @@ module.exports = {
     return user[0];
   },
 
+  async findById(id){
+    const user = await knex("users").where({id});
+
+    return user[0];
+  },
+
   async all(){
     const users = await knex("users");
 
