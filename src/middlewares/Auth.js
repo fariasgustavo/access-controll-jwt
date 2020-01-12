@@ -44,11 +44,5 @@ module.exports = {
         next();
       }
     });
-  },
-
-  async decodeToken(token) {
-    const data = await jwt.verify(token, process.env.SECRET_KEY);
-
-    return data;
-  },  
+  }, 
 };

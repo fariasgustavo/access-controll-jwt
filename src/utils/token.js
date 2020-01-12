@@ -17,10 +17,4 @@ module.exports = {
 
     return token;
   },
-
-  async decodeToken(token) {
-    const data = await jwt.verify(token, process.env.SECRET_KEY);
-
-    return data;
-  },  
 };
