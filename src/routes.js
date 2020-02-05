@@ -3,7 +3,7 @@ const routes = express.Router();
 const Auth = require("./middlewares/Auth");
 const UserController = require("./controllers/UserController");
 
-routes.get("/login", UserController.login);
+routes.post("/login", UserController.login);
 routes.get("/refresh-token",Auth.refresToken)
 routes.get("/users", Auth.authorize, UserController.getAll);
 
