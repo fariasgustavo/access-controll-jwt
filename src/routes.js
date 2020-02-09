@@ -5,6 +5,6 @@ const UserController = require("./controllers/UserController");
 
 routes.post("/login", UserController.login);
 routes.get("/refresh-token",Auth.refresToken)
-routes.get("/users", Auth.authorize, UserController.getAll);
+routes.get("/users", Auth.authorize, Auth.authorizeByRole(['credit']), UserController.getAll);
 
 module.exports = routes;

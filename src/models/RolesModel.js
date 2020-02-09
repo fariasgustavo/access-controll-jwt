@@ -1,8 +1,8 @@
 const knex = require("../database");
 
 module.exports = {
-  async getByTitle(title) {
-    const role = await knex("roles").where("title", title);
+  async findOne(id) {
+    const role = await knex("roles").where("id", id);
 
     return role[0];
   }

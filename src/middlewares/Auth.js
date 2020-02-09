@@ -4,6 +4,7 @@ require("dotenv").config({
 
 const jwt = require("jsonwebtoken");
 const UserModel = require('../models/UsersModel');
+const RoleModel = require('../models/RolesModel');
 const { createToken } = require("../utils/token");
 
 module.exports = {
@@ -45,4 +46,25 @@ module.exports = {
       }
     });
   }, 
+
+  authorizeByRole(roleList){
+    return async (req, res, next) => {
+      const token = req.body.token || req.query.token || req.headers["x-access-token"];
+      const userData = jwt.decode(token);
+      
+      const { role_id } = userData;
+      const userRole = await RoleModel.findOne(role_id);
+      
+      const { title: userRoleTitle } = userRole;
+
+      const hasRolePermitions = roleList.find(role => role === userRoleTitle);
+
+      if(!hasRolePermitions){
+        res.status(403).send({ message: "unauthorized resource for user's role" })
+        return;
+      }
+    
+      next();
+    }
+  }
 };
