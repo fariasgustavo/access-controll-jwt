@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --detectOpenHandles",
-    "start": "nodemon src/server.js --ignore test"
+    "start": "nodemon --inspect=0.0.0.0 src/server.js --ignore test"
   },
   "author": "",
   "license": "ISC",
