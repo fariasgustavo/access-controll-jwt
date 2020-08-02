@@ -4,7 +4,7 @@ const Auth = require("./middlewares/Auth");
 const UserController = require("./controllers/UserController");
 
 routes.post("/login", UserController.login);
-routes.get("/refresh-token",Auth.refresToken)
+routes.post("/refresh-token",Auth.authorize,Auth.refresToken);
 routes.get("/users", Auth.authorize, Auth.authorizeByRole(['credit']), UserController.getAll);
 
 module.exports = routes;
