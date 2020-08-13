@@ -1,20 +1,16 @@
-const {
-  host,
-  user,
-  name: database,
-  password,
-  port
-} = require("./config/database");
+import {
+  host, user, name as database, password, port,
+} from './config/database';
 
-const knex = require("knex")({
-  client: "mysql",
+const knex = require('knex')({
+  client: 'mysql',
   connection: {
     host,
     user,
     password,
     database,
-    port
-  }
+    port,
+  },
 });
 
-module.exports = knex;
+export default knex;

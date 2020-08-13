@@ -1,10 +1,11 @@
-const express = require("express");
-const routes = express.Router();
-const Auth = require("./middlewares/Auth");
-const UserController = require("./controllers/UserController");
+const express = require('express');
 
-routes.post("/login", UserController.login);
-routes.post("/refresh-token",Auth.authorize,Auth.refresToken);
-routes.get("/users", Auth.authorize, Auth.authorizeByRole(['credit']), UserController.getAll);
+const routes = express.Router();
+const Auth = require('./middlewares/Auth');
+const UserController = require('./controllers/UserController');
+
+routes.post('/login', UserController.login);
+routes.post('/refresh-token', Auth.authorize, Auth.refresToken);
+routes.get('/users', Auth.authorize, Auth.authorizeByRole(['credit']), UserController.getAll);
 
 module.exports = routes;

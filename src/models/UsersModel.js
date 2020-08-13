@@ -1,24 +1,24 @@
-const knex = require("../database");
+const knex = require('../database');
 
 module.exports = {
   async findOne(email, password) {
-    const user = await knex("users").where({
-      email: email,
-      password: password
+    const user = await knex('users').where({
+      email,
+      password,
     });
 
     return user[0];
   },
 
-  async findById(id){
-    const user = await knex("users").where({id});
+  async findById(id) {
+    const user = await knex('users').where({ id });
 
     return user[0];
   },
 
-  async all(){
-    const users = await knex("users");
+  async all() {
+    const users = await knex('users');
 
     return users;
-  }
+  },
 };

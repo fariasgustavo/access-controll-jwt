@@ -1,0 +1,8 @@
+./node_modules
+./db
+./.commitlintrc.js
+./.huskyrc.json
+./.eslintrc
+./.vscode
+./docker-compose.yml
+./package.json

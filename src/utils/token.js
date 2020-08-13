@@ -1,7 +1,5 @@
-require("dotenv").config({
-  path: "./.env"
-});
-const jwt = require("jsonwebtoken");
+require('dotenv').config({ path: './.env' });
+const jwt = require('jsonwebtoken');
 
 module.exports = {
   createToken(user, expiresIn) {
@@ -9,10 +7,10 @@ module.exports = {
       {
         sub: user.id,
         email: user.email,
-        role_id: user.role_id 
+        role_id: user.role_id,
       },
       process.env.SECRET_KEY,
-      { expiresIn }
+      { expiresIn },
     );
 
     return token;

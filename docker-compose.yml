@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 
 services:
   mysql:
@@ -13,7 +13,7 @@ services:
       MYSQL_ROOT_PASSWORD: 123456
       MYSQL_USER: app
       MYSQL_PASSWORD: 098765
-  
+
   nodejs:
     build: .
     container_name: nodejs
