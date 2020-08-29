@@ -1,11 +1,11 @@
-const express = require('express');
+import express from 'express';
+import Auth from './middlewares/Auth.js';
+import UserController from './controllers/UserController.js';
 
 const routes = express.Router();
-const Auth = require('./middlewares/Auth');
-const UserController = require('./controllers/UserController');
 
 routes.post('/login', UserController.login);
 routes.post('/refresh-token', Auth.authorize, Auth.refresToken);
 routes.get('/users', Auth.authorize, Auth.authorizeByRole(['credit']), UserController.getAll);
 
-module.exports = routes;
+export default routes;

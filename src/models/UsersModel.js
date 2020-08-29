@@ -1,6 +1,6 @@
-const knex = require('../database');
+import knex from '../database.js';
 
-module.exports = {
+export default {
   async findOne(email, password) {
     const user = await knex('users').where({
       email,
@@ -9,13 +9,11 @@ module.exports = {
 
     return user[0];
   },
-
   async findById(id) {
     const user = await knex('users').where({ id });
 
     return user[0];
   },
-
   async all() {
     const users = await knex('users');
 

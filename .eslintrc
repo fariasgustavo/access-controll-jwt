@@ -15,7 +15,8 @@
   "rules": {
     "linebreak-style": 0,
     "no-underscore-dangle": 1,
-    "class-methods-use-this": 1,
+    "class-methods-use-this": 0,
+    "import/extensions": 0,
     "camelcase": [2, { "properties": "never", "ignoreDestructuring": true }],
     "arrow-parens": [
       2,

@@ -1,11 +1,12 @@
-require('dotenv').config({ path: './.env' });
+import dotenv from 'dotenv';
+import jwt from 'jsonwebtoken';
+import UserModel from '../models/UsersModel.js';
+import RoleModel from '../models/RolesModel.js';
+import Token from '../utils/token.js';
 
-const jwt = require('jsonwebtoken');
-const UserModel = require('../models/UsersModel');
-const RoleModel = require('../models/RolesModel');
-const { createToken } = require('../utils/token');
+dotenv.config({ path: './.env' });
 
-module.exports = {
+export default {
   refresToken(req, res) {
     const refreshToken = req.headers.authorization.replace('Bearer ', '');
 
@@ -15,14 +16,13 @@ module.exports = {
       } else {
         const tokenData = jwt.decode(refreshToken);
         const user = await UserModel.findById(tokenData.sub);
-        const newToken = createToken(user, process.env.TOKEN_EXPIRES);
-        const newRefreshToken = createToken(user, process.env.REFRESH_TOKEN_EXPIRES);
+        const newToken = Token.createToken(user, process.env.TOKEN_EXPIRES);
+        const newRefreshToken = Token.createToken(user, process.env.REFRESH_TOKEN_EXPIRES);
 
         res.status(200).send({ token: newToken, refresToken: newRefreshToken });
       }
     });
   },
-
   authorize(req, res, next) {
     const token = req.headers.authorization.replace('Bearer ', '');
 
@@ -39,7 +39,6 @@ module.exports = {
       }
     });
   },
-
   authorizeByRole(roleList) {
     return async (req, res, next) => {
       const token = req.headers.authorization.replace('Bearer ', '');

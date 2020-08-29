@@ -1,7 +1,9 @@
-require('dotenv').config({ path: './.env' });
-const jwt = require('jsonwebtoken');
+import dotenv from 'dotenv';
+import jwt from 'jsonwebtoken';
 
-module.exports = {
+dotenv.config({ path: './.env' });
+
+export default {
   createToken(user, expiresIn) {
     const token = jwt.sign(
       {

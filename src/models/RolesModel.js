@@ -1,6 +1,6 @@
-const knex = require('../database');
+import knex from '../database.js';
 
-module.exports = {
+export default {
   async findOne(id) {
     const role = await knex('roles').where('id', id);
 

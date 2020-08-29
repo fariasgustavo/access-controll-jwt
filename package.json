@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "An user access control to a admin panel",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "jest --detectOpenHandles",
     "start": "nodemon --inspect=0.0.0.0 src/server.js --ignore test",

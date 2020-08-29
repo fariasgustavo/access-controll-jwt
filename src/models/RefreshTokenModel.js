@@ -1,11 +1,11 @@
-const jwt = require('jsonwebtoken');
-const knex = require('../database');
+import jwt from 'jsonwebtoken';
+import knex from '../database.js';
 
-module.exports = {
+export default {
   async create(token) {
     try {
-      const { id: userId } = jwt.decode(token);
-      const result = knex('refresh_tokens').insert({ userId, token });
+      const { sub: userId } = jwt.decode(token);
+      const result = knex('refresh_tokens').insert({ user_id: userId, token });
 
       return result;
     } catch (e) {
