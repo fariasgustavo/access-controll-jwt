@@ -52,7 +52,7 @@ export default {
       const hasRolePermitions = roleList.some(role => role === userRoleTitle);
 
       if (!hasRolePermitions) {
-        res.status(403).send({ message: "unauthorized resource for user's role" });
+        res.status(403).send({ message: "Unauthorized resource for user's role" });
         return;
       }
 

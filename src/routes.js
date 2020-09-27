@@ -6,6 +6,6 @@ const routes = express.Router();
 
 routes.post('/login', UserController.login);
 routes.post('/refresh-token', Auth.authorize, Auth.refresToken);
-routes.get('/users', Auth.authorize, Auth.authorizeByRole(['credit']), UserController.getAll);
+routes.get('/users', Auth.authorize, Auth.authorizeByRole(['admin', 'credit']), UserController.getAll);
 
 export default routes;
