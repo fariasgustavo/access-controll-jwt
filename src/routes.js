@@ -6,6 +6,11 @@ import UserController from './controllers/UserController.js';
 const routes = express.Router();
 
 routes.post('/token', AuthController.token);
-routes.get('/users', Auth.authorize, Auth.authorizeByRole(['admin', 'credit']), UserController.getAll);
+routes.get(
+  '/users/all',
+  Auth.authorize,
+  Auth.authorizeByRole(['admin', 'credit']),
+  UserController.all,
+);
 
 export default routes;
