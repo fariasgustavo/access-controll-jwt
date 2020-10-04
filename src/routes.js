@@ -12,5 +12,6 @@ routes.get(
   Auth.authorizeByRole(['admin', 'credit']),
   UserController.all,
 );
+routes.post('/users/add', Auth.authorize, Auth.authorizeByRole(['admin']), UserController.add);
 
 export default routes;
