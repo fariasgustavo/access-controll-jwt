@@ -20,6 +20,8 @@ export default {
     return users;
   },
   async add({ email, password, roleId }) {
-    return knex('users').returning('id').insert([{ email, password, role_id: roleId }]);
+    return knex('users')
+      .returning('id')
+      .insert([{ email, password, role_id: roleId }]);
   },
 };
